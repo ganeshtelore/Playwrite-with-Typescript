@@ -1,10 +1,12 @@
 import {Page, Locator, expect} from "@playwright/test";
+
 export class LoginPage {
     private page: Page;
     private emailInp: Locator;
     private passInp: Locator;
     private loginBtn: Locator;
     private headerData: Locator;
+   
 
     constructor(page: Page){
         this.page=page;
@@ -15,7 +17,7 @@ export class LoginPage {
     }
 
     async navigate(){
-        await this.page.goto("https://ethicalpay2.koyeb.app");
+        await this.page.goto('/');
     }
     async inputEmail(email: string){
         await expect(this.emailInp).toBeVisible();
