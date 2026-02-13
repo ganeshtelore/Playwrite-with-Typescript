@@ -1,4 +1,4 @@
-import {test, expect} from "@playwright/test"
+import {test, expect} from "@playwright/test";
 
 // Test for Redirecting to page & checking the page title
 test("Verify Redirection & Title", async({page})=>{
