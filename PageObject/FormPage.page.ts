@@ -17,6 +17,9 @@ export class FormPage {
   private textbox2: Locator;
   private alertBtn: Locator;
   private confirmBtn: Locator;
+  private hiderBtn: Locator;
+  private showBtn: Locator;
+  private inputbox: Locator;
 
   constructor(page: Page, context: BrowserContext) {
     this.page = page;
@@ -37,11 +40,15 @@ export class FormPage {
     this.textbox2 = page.locator('#name');
     this.alertBtn = page.locator('input[type="submit"][value="Alert"]');
     this.confirmBtn = page.locator('input[type="submit"][value="Confirm"]')
+    this.hiderBtn = page.locator("#hide-textbox");
+    this.inputbox = page.getByPlaceholder("Hide/Show Example");
+    this.showBtn = page.locator("#show-textbox");
   }
 
   async navigate() {
     await this.page.goto(process.env.BASE_URL!);
   }
+
 
   async fillForm(name:string) {
     await this.radioBtn.click();
@@ -84,5 +91,9 @@ export class FormPage {
   });
   await this.textbox2.fill(name);
   await this.confirmBtn.click();
+  await this.hiderBtn.click(),
+  expect(this.inputbox).toBeHidden();
+  await this.showBtn.click();
+  expect(this.inputbox).toBeVisible();
   }
 }

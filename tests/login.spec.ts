@@ -1,4 +1,4 @@
-import { LoginPage } from "../PageObjectModel/login.page";
+import { LoginPage } from "../PageObject/login.page";
 import {test, expect} from "@playwright/test";
 import dotenv from "dotenv";
 import LoginPageData from "../TestData/LoginPage/LoginPageData.json";
